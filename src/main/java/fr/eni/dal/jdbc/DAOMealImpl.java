@@ -49,4 +49,33 @@ public class DAOMealImpl implements DAOMeal {
 		return meals;
 	}
 
+	@Override
+	public void insert(Meal meal) {
+		Connection cnx = JdbcTools.getConnection();
+	
+		try {
+			PreparedStatement stmt;
+			stmt = cnx.prepareStatement("INSERT INTO Meal (created_date, created_hour, aliments) VALUES (?, ?, ?)");
+			
+			stmt.setString(1, meal.createdDate);
+			stmt.setString(2, meal.createdHour);
+			stmt.setString(3, meal.aliments);
+			
+			// Executer la requête
+			stmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			// Fermer la connexion
+			try {
+				cnx.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
 }

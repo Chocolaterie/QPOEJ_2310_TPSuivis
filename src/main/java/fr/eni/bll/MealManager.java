@@ -11,4 +11,8 @@ public class MealManager {
 		List<Meal> meals = DAOFactory.getDAOMeal().selectAll();
 		return meals;
 	}
+	
+	public void save(Meal meal) {
+		DAOFactory.getDAOMeal().insert(meal);
+	}
 }

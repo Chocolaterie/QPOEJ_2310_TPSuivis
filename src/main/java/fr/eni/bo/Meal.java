@@ -7,6 +7,13 @@ public class Meal {
 	public String createdHour;
 	public String aliments;
 	
+	public Meal() {
+		id = -1;
+		createdDate = "";
+		createdHour = "";
+		aliments = "";
+	}
+	
 	/**
 	 * @param id
 	 * @param createdDate
